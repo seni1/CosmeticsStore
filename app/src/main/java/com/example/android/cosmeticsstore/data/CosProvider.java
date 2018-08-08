@@ -274,8 +274,8 @@ public class CosProvider extends ContentProvider {
         if (values.containsKey(CosmeticsEntry.COLUMN_CONTACTS)) {
 
 
-            Integer contacts = values.getAsInteger(CosmeticsEntry.COLUMN_CONTACTS);
-            if (contacts == null && contacts < 0) {
+            String contacts = values.getAsString(CosmeticsEntry.COLUMN_CONTACTS);
+            if (contacts == null) {
                 throw new IllegalArgumentException("Product requires valid supplier contacts");
             }
         }

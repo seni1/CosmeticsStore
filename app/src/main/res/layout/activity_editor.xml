@@ -28,18 +28,18 @@
 
             <!-- Name field -->
             <EditText
-                android:id="@+id/edit_pet_name"
+                android:id="@+id/edit_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="sdg"
+                android:hint="Product Name"
                 android:inputType="textCapWords" />
 
-            <!-- Breed field -->
+            <!-- Price field -->
             <EditText
-                android:id="@+id/edit_pet_breed"
+                android:id="@+id/edit_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="fgh"
+                android:hint="Product Price"
                 android:inputType="textCapWords" />
         </LinearLayout>
     </LinearLayout>
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="asf" />
+            android:text="Quantity" />
 
         <!-- Input field -->
         <LinearLayout
@@ -65,13 +65,14 @@
             android:orientation="vertical">
 
             <!-- Gender drop-down spinner -->
-            <Spinner
-                android:id="@+id/spinner_gender"
+            <EditText
+                android:id="@+id/edit_quantity"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:paddingRight="16dp"
-                android:spinnerMode="dropdown" />
+                android:layout_height="wrap_content"
+                android:hint="Product Quantity"
+                android:inputType="textCapWords" />
         </LinearLayout>
+
     </LinearLayout>
 
     <!-- Measurement category -->
@@ -85,7 +86,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="asf" />
+            android:text="Supplier" />
 
         <!-- Input fields -->
         <RelativeLayout
@@ -94,20 +95,23 @@
             android:layout_weight="2"
             android:paddingLeft="4dp">
 
-            <!-- Weight field -->
+            <!-- Supplier field -->
             <EditText
-                android:id="@+id/edit_pet_weight"
+                android:id="@+id/edit_supplier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="fsf"
+                android:hint="Name of Suppler"
                 android:inputType="number" />
 
-            <!-- Units for weight (kg) -->
-            <TextView
-                android:id="@+id/label_weight_units"
+            <!-- Contacts field -->
+            <EditText
+                android:id="@+id/edit_contacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="fsa" />
+                android:hint="Contacts of Suppler"
+                android:inputType="number" />
+
+
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
