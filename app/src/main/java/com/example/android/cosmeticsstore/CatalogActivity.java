@@ -1,30 +1,27 @@
 package com.example.android.cosmeticsstore;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
-import com.example.android.cosmeticsstore.data.CosmeticsContract;
-import com.example.android.cosmeticsstore.data.CosmeticsDbHelper;
-import com.example.android.cosmeticsstore.data.CosmeticsContract.CosmeticsEntry;
+import com.example.android.cosmeticsstore.data.CosDbHelper;
+import com.example.android.cosmeticsstore.data.CosContract.CosmeticsEntry;
 
 /**
  * Displays list of pets that were entered and stored in the app.
  */
 public class CatalogActivity extends AppCompatActivity {
 
-    private CosmeticsDbHelper dbHelper;
+    private CosDbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
 
-        dbHelper = new CosmeticsDbHelper(this);
+        dbHelper = new CosDbHelper(this);
 
         displayDatabaseInfo();
     }
@@ -43,7 +40,7 @@ public class CatalogActivity extends AppCompatActivity {
     private void displayDatabaseInfo() {
         // To access our database, we instantiate our subclass of SQLiteOpenHelper
         // and pass the context, which is the current activity.
-       CosmeticsDbHelper dbHelper = new CosmeticsDbHelper(this);
+       CosDbHelper dbHelper = new CosDbHelper(this);
 
         // Create and/or open a database to read from it
         SQLiteDatabase db = dbHelper.getReadableDatabase();

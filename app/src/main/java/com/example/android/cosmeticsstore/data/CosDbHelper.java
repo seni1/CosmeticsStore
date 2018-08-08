@@ -5,11 +5,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.android.cosmeticsstore.data.CosmeticsContract.CosmeticsEntry;
+import com.example.android.cosmeticsstore.data.CosContract.CosmeticsEntry;
 
-public class CosmeticsDbHelper extends SQLiteOpenHelper {
+public class CosDbHelper extends SQLiteOpenHelper {
 
-    public static final String LOG_TAG = CosmeticsDbHelper.class.getSimpleName();
+    public static final String LOG_TAG = CosDbHelper.class.getSimpleName();
 
     /** Name of the database file */
     private static final String DATABASE_NAME = "cosmetics.db";
@@ -19,8 +19,8 @@ public class CosmeticsDbHelper extends SQLiteOpenHelper {
      */
     private static final int DATABASE_VERSION = 1;
 
-    //Constructs a new instance of {@link CosmeticsDbHelper}
-    public CosmeticsDbHelper(Context context) {
+    //Constructs a new instance of {@link CosDbHelper}
+    public CosDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

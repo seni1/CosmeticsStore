@@ -3,16 +3,12 @@ package com.example.android.cosmeticsstore;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.android.cosmeticsstore.data.CosmeticsContract;
-import com.example.android.cosmeticsstore.data.CosmeticsDbHelper;
-import com.example.android.cosmeticsstore.data.CosmeticsContract.CosmeticsEntry;
-
-import static com.example.android.cosmeticsstore.data.CosmeticsContract.CosmeticsEntry.*;
+import com.example.android.cosmeticsstore.data.CosDbHelper;
+import com.example.android.cosmeticsstore.data.CosContract.CosmeticsEntry;
 
 /**
  * Allows user to create a new cosmetics product or edit and existing one.
@@ -50,7 +46,7 @@ public class EditorActivity extends AppCompatActivity {
         int quantity = Integer.parseInt(quantityString);
         int contacts = Integer.parseInt(contactsString);
 
-        CosmeticsDbHelper dbHelper = new CosmeticsDbHelper(this);
+        CosDbHelper dbHelper = new CosDbHelper(this);
 
         // Gets the data repository in the write mode
         SQLiteDatabase db = dbHelper.getWritableDatabase();
