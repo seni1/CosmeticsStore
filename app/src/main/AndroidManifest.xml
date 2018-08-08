@@ -22,7 +22,12 @@
         <activity
             android:name=".EditorActivity"
             android:label="Карточка товара"
-            android:parentActivityName=".CatalogActivity"/>
+            android:parentActivityName=".CatalogActivity" />
+
+        <provider
+            android:name=".data.CosProvider"
+            android:authorities="com.example.android.cosmeticsstore"
+            android:exported="false" />
     </application>
 
 </manifest>
