@@ -11,7 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <TextView
             style="@style/CategoryStyle"
@@ -34,7 +35,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <TextView
             style="@style/CategoryStyle"
@@ -51,10 +53,7 @@
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
-            <TextView
-                android:id="@+id/label_contacts"
-                style="@style/EditorUnitsStyle"
-                android:text="@string/currency" />
+
         </RelativeLayout>
 
     </LinearLayout>
@@ -63,12 +62,20 @@
         android:id="@+id/container_measurement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
             android:text="@string/category_quantity" />
+
+        <Button
+            android:id="@+id/increase_button"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:text="@string/increase_button"
+            android:padding="10dp"/>
 
         <!-- Input fields -->
         <RelativeLayout
@@ -78,7 +85,9 @@
             android:paddingLeft="4dp">
 
             <!-- Quantity field -->
-            <TextView
+
+
+            <EditText
                 android:id="@+id/prod_quant_tv"
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
@@ -86,13 +95,21 @@
 
         </RelativeLayout>
 
+        <Button
+            android:id="@+id/decrease_button"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:text="@string/decrease_button"
+            android:layout_alignParentRight="true" />
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/container_supplier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <TextView
             style="@style/CategoryStyle"
@@ -116,7 +133,8 @@
         android:id="@+id/container_contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <!-- Label -->
         <TextView
@@ -145,14 +163,8 @@
         android:id="@+id/container_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <Button
-            android:id="@+id/order_button"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/order_button" />
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <!-- Input fields -->
         <RelativeLayout
@@ -161,12 +173,21 @@
             android:layout_weight="2"
             android:paddingLeft="4dp">
 
+            <!-- Label -->
+            <Button
+                android:id="@+id/order_button"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/order_button"
+                android:padding="10dp"/>
+
             <!-- Contacts field -->
             <Button
                 android:id="@+id/delete_button"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@string/delete_button" />
+                android:text="@string/delete_button"
+                android:layout_alignParentRight="true" />
 
 
         </RelativeLayout>

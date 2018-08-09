@@ -34,7 +34,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
 
     private TextView nameTV;
     private TextView priceTV;
-    private TextView quantityTV;
+    private EditText quantityET;
     private TextView supplierTV;
     private TextView contactsTV;
 
@@ -66,13 +66,13 @@ public class ProductDetailsActivity extends AppCompatActivity implements
 
         nameTV = findViewById(R.id.prod_name_tv);
         priceTV = findViewById(R.id.prod_price_tv);
-        quantityTV = findViewById(R.id.prod_quant_tv);
+        quantityET = findViewById(R.id.prod_quant_tv);
         supplierTV = findViewById(R.id.prod_sup_tv);
         contactsTV = findViewById(R.id.sup_cont_tv);
 
         nameTV.setOnTouchListener(mTouchListener);
         priceTV.setOnTouchListener(mTouchListener);
-        quantityTV.setOnTouchListener(mTouchListener);
+        quantityET.setOnTouchListener(mTouchListener);
         supplierTV.setOnTouchListener(mTouchListener);
         contactsTV.setOnTouchListener(mTouchListener);
 
@@ -81,7 +81,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
     private void savePet() {
         String nameString = nameTV.getText().toString().trim();
         String priceString = priceTV.getText().toString().trim();
-        String quantityString = quantityTV.getText().toString().trim();
+        String quantityString = quantityET.getText().toString().trim();
         String supplierString = supplierTV.getText().toString().trim();
         String contactsString = contactsTV.getText().toString().trim();
 
@@ -229,7 +229,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
 
             nameTV.setText(name);
             priceTV.setText(price);
-            quantityTV.setText(quantity);
+            quantityET.setText(quantity);
             supplierTV.setText(supplier);
             contactsTV.setText(contacts);
         }
@@ -239,7 +239,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
     public void onLoaderReset(Loader<Cursor> loader) {
         nameTV.setText("");
         priceTV.setText("");
-        quantityTV.setText("");
+        quantityET.setText("");
         supplierTV.setText("");
         contactsTV.setText("");
     }
