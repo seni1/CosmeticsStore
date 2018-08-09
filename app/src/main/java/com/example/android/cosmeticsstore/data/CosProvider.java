@@ -138,14 +138,14 @@ public class CosProvider extends ContentProvider {
         }
 
         // Check that the price is not null
-        Integer price = values.getAsInteger(CosmeticsEntry.COLUMN_PRODUCT_PRICE);
+        String price = values.getAsString(CosmeticsEntry.COLUMN_PRODUCT_PRICE);
 
         if (price == null) {
             throw new IllegalArgumentException("Pet requires valid price");
         }
 
         // Check that the price is not null
-        Integer quantity = values.getAsInteger(CosmeticsEntry.COLUMN_PRODUCT_QUANTITY);
+        String quantity = values.getAsString(CosmeticsEntry.COLUMN_PRODUCT_QUANTITY);
 
         if (quantity == null) {
             throw new IllegalArgumentException("Product requires valid quantity");
@@ -159,7 +159,7 @@ public class CosProvider extends ContentProvider {
         }
 
         // Check that the price is not null
-        Integer contacts = values.getAsInteger(CosmeticsEntry.COLUMN_CONTACTS);
+        String contacts = values.getAsString(CosmeticsEntry.COLUMN_CONTACTS);
 
         if (contacts == null) {
             throw new IllegalArgumentException("Product requires supplier contacts");

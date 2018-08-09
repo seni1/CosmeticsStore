@@ -1,81 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Layout for the editor -->
+<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="@dimen/activity_margin"
     tools:context=".EditorActivity">
 
-    <!-- Overview category -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Label -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name" />
+            style="@style/CategoryStyle"
+            android:text="@string/category_name" />
 
-        <!-- Input fields -->
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:orientation="vertical"
             android:paddingLeft="4dp">
 
-            <!-- Name field -->
             <EditText
                 android:id="@+id/edit_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Product Name"
+                style="@style/EditorFieldStyle"
                 android:inputType="textCapWords" />
-
-            <!-- Price field -->
-            <EditText
-                android:id="@+id/edit_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Product Price"
-                android:inputType="textCapWords" />
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
-    <!-- Gender category -->
     <LinearLayout
-        android:id="@+id/container_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Label -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quantity" />
+            style="@style/CategoryStyle"
+            android:text="@string/category_price" />
 
-        <!-- Input field -->
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:orientation="vertical">
+            android:paddingLeft="4dp">
 
-            <!-- Gender drop-down spinner -->
             <EditText
-                android:id="@+id/edit_quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Product Quantity"
-                android:inputType="textCapWords" />
-        </LinearLayout>
+                android:id="@+id/edit_price"
+                style="@style/EditorFieldStyle"
+                android:inputType="number" />
 
+            <TextView
+                android:id="@+id/label_contacts"
+                style="@style/EditorUnitsStyle"
+                android:text="@string/currency" />
+        </RelativeLayout>
     </LinearLayout>
 
-    <!-- Measurement category -->
     <LinearLayout
         android:id="@+id/container_measurement"
         android:layout_width="match_parent"
@@ -84,9 +65,8 @@
 
         <!-- Label -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Supplier" />
+            style="@style/CategoryStyle"
+            android:text="@string/category_quantity" />
 
         <!-- Input fields -->
         <RelativeLayout
@@ -95,20 +75,61 @@
             android:layout_weight="2"
             android:paddingLeft="4dp">
 
-            <!-- Supplier field -->
+            <!-- Weight field -->
             <EditText
-                android:id="@+id/edit_supplier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Name of Suppler"
+                android:id="@+id/edit_quantity"
+                style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
-            <!-- Contacts field -->
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_supplier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/category_supplier" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="4dp">
+
+            <EditText
+                android:id="@+id/edit_supplier"
+                style="@style/EditorFieldStyle"
+                android:inputType="textCapWords" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Label -->
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/category_contacts" />
+
+        <!-- Input fields -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="4dp">
+
+            <!-- Weight field -->
             <EditText
                 android:id="@+id/edit_contacts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Contacts of Suppler"
+                style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
 
