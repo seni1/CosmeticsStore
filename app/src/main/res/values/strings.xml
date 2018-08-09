@@ -92,6 +92,10 @@
     <string name="category_supplier">Supplier</string>
     <string name="category_contacts">Contacts</string>
     <string name="currency">$</string>
+    <string name="editor_activity_title_edit_product">Edit Product</string>
+    <string name="order_button">ORDER PRODUCT</string>
+    <string name="delete_button">DELETE PRODUCT</string>
+    <string name="editor_activity_title_product_details">Product Details</string>
 
 
 </resources>

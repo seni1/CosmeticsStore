@@ -55,7 +55,7 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-                Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
+                Intent intent = new Intent(CatalogActivity.this, ProductDetailsActivity.class);
 
                 Uri currentCosUri = ContentUris.withAppendedId(CosmeticsEntry.CONTENT_URI, id);
 

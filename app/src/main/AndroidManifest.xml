@@ -24,6 +24,11 @@
             android:label="Карточка товара"
             android:parentActivityName=".CatalogActivity" />
 
+        <activity
+            android:name=".ProductDetailsActivity"
+            android:label="Карточка товара"
+            android:parentActivityName=".CatalogActivity" />
+
         <provider
             android:name=".data.CosProvider"
             android:authorities="com.example.android.cosmeticsstore"
