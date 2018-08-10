@@ -75,7 +75,7 @@
             android:layout_height="40dp"
             android:layout_width="40dp"
             android:text="@string/decrease_button"
-            android:onClick="addQuantity"
+            android:onClick="decreaseQuantity"
             android:padding="10dp"/>
 
         <!-- Input fields -->
@@ -101,7 +101,7 @@
             android:layout_height="40dp"
             android:layout_width="40dp"
             android:text="@string/increase_button"
-            android:onClick="decreaseQuantity"
+            android:onClick="addQuantity"
             android:layout_alignParentRight="true" />
 
     </LinearLayout>

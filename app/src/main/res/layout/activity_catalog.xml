@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_empty_shelter"/>
+            android:src="@drawable/empty_shop"/>
 
         <TextView
             android:id="@+id/empty_title_text"
@@ -32,7 +32,7 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-medium"
             android:paddingTop="16dp"
-            android:text="@string/empty_view_title_text"
+            android:text="@string/empty_shop_text"
             android:textAppearance="?android:textAppearanceMedium"/>
 
         <TextView
@@ -43,7 +43,7 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif"
             android:paddingTop="8dp"
-            android:text="@string/empty_view_subtitle_text"
+            android:text="@string/empty_store_subtitle_text"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="#A2AAB0"/>
     </RelativeLayout>
@@ -55,5 +55,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_add_pet"/>
+        android:src="@drawable/insert_product"/>
 </RelativeLayout>

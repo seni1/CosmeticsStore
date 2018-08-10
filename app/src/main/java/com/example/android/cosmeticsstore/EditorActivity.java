@@ -26,9 +26,9 @@ import com.example.android.cosmeticsstore.data.CosContract.CosmeticsEntry;
 
 public class EditorActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
-    private static final int EXISTING_PET_LOADER = 0;
+    private static final int EXISTING_COS_LOADER = 0;
 
-    private Uri mCurrentPetUri;
+    private Uri mCurrentCosUri;
 
     private EditText mNameEditText;
     private EditText priceET;
@@ -36,12 +36,12 @@ public class EditorActivity extends AppCompatActivity implements
     private EditText supplierET;
     private EditText contactsET;
 
-    private boolean mPetHasChanged = false;
+    private boolean mCosHasChanged = false;
 
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-            mPetHasChanged = true;
+            mCosHasChanged = true;
             return false;
         }
     };
@@ -52,14 +52,14 @@ public class EditorActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_editor);
 
         Intent intent = getIntent();
-        mCurrentPetUri = intent.getData();
+        mCurrentCosUri = intent.getData();
 
-        if (mCurrentPetUri == null) {
+        if (mCurrentCosUri == null) {
             setTitle(getString(R.string.editor_activity_title_new_pet));
             invalidateOptionsMenu();
         } else {
             setTitle(getString(R.string.editor_activity_title_edit_product));
-            getLoaderManager().initLoader(EXISTING_PET_LOADER, null, this);
+            getLoaderManager().initLoader(EXISTING_COS_LOADER, null, this);
         }
 
         mNameEditText = findViewById(R.id.edit_name);
@@ -83,7 +83,7 @@ public class EditorActivity extends AppCompatActivity implements
         String supplierString = supplierET.getText().toString().trim();
         String contactsString = contactsET.getText().toString().trim();
 
-        if (mCurrentPetUri == null &&
+        if (mCurrentCosUri == null &&
                 TextUtils.isEmpty(nameString) && TextUtils.isEmpty(priceString) &&
                 TextUtils.isEmpty(quantityString) && TextUtils.isEmpty(supplierString) && TextUtils.isEmpty(contactsString)) {
             return;
@@ -96,22 +96,22 @@ public class EditorActivity extends AppCompatActivity implements
         values.put(CosmeticsEntry.COLUMN_SUPPLIER_NAME, supplierString);
         values.put(CosmeticsEntry.COLUMN_CONTACTS, contactsString);
 
-        if (mCurrentPetUri == null) {
+        if (mCurrentCosUri == null) {
             Uri newUri = getContentResolver().insert(CosmeticsEntry.CONTENT_URI, values);
             if (newUri == null) {
-                Toast.makeText(this, getString(R.string.editor_insert_pet_failed),
+                Toast.makeText(this, getString(R.string.editor_insert_product_failed),
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, getString(R.string.editor_insert_pet_successful),
+                Toast.makeText(this, getString(R.string.editor_insert_product_successful),
                         Toast.LENGTH_SHORT).show();
             }
         } else {
-            int rowsAffected = getContentResolver().update(mCurrentPetUri, values, null, null);
+            int rowsAffected = getContentResolver().update(mCurrentCosUri, values, null, null);
             if (rowsAffected == 0) {
-                Toast.makeText(this, getString(R.string.editor_update_pet_failed),
+                Toast.makeText(this, getString(R.string.editor_update_product_failed),
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, getString(R.string.editor_update_pet_successful),
+                Toast.makeText(this, getString(R.string.editor_update_product_successful),
                         Toast.LENGTH_SHORT).show();
             }
         }
@@ -126,7 +126,7 @@ public class EditorActivity extends AppCompatActivity implements
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        if (mCurrentPetUri == null) {
+        if (mCurrentCosUri == null) {
             MenuItem menuItem = menu.findItem(R.id.action_delete);
             menuItem.setVisible(false);
         }
@@ -144,7 +144,7 @@ public class EditorActivity extends AppCompatActivity implements
                 showDeleteConfirmationDialog();
                 return true;
             case android.R.id.home:
-                if (!mPetHasChanged) {
+                if (!mCosHasChanged) {
                     NavUtils.navigateUpFromSameTask(EditorActivity.this);
                     return true;
                 }
@@ -162,13 +162,10 @@ public class EditorActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * This method is called when the back button is pressed.
-     */
     @Override
     public void onBackPressed() {
 
-        if (!mPetHasChanged) {
+        if (!mCosHasChanged) {
             super.onBackPressed();
             return;
         }
@@ -198,7 +195,7 @@ public class EditorActivity extends AppCompatActivity implements
         };
 
         return new CursorLoader(this,   // Parent activity context
-                mCurrentPetUri,         // Query the content URI for the current pet
+                mCurrentCosUri,         // Query the content URI for the current pet
                 projection,             // Columns to include in the resulting Cursor
                 null,                   // No selection clause
                 null,                   // No selection arguments
@@ -207,7 +204,7 @@ public class EditorActivity extends AppCompatActivity implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        // Bail early if the cursor is null or there is less than 1 row in the cursor
+
         if (cursor == null || cursor.getCount() < 1) {
             return;
         }
@@ -279,7 +276,7 @@ public class EditorActivity extends AppCompatActivity implements
             }
         });
 
-        // Create and show the AlertDialog
+
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
@@ -288,13 +285,13 @@ public class EditorActivity extends AppCompatActivity implements
      * Perform the deletion of the pet in the database.
      */
     private void deleteProduct() {
-        if (mCurrentPetUri != null) {
-            int rowsDeleted = getContentResolver().delete(mCurrentPetUri, null, null);
+        if (mCurrentCosUri != null) {
+            int rowsDeleted = getContentResolver().delete(mCurrentCosUri, null, null);
             if (rowsDeleted == 0) {
-                Toast.makeText(this, getString(R.string.editor_delete_pet_failed),
+                Toast.makeText(this, getString(R.string.editor_delete_product_failed),
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, getString(R.string.editor_delete_pet_successful),
+                Toast.makeText(this, getString(R.string.editor_delete_product_successful),
                         Toast.LENGTH_SHORT).show();
             }
         }

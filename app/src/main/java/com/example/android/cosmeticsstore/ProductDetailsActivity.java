@@ -279,8 +279,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements
             String contacts = cursor.getString(contactsColumnIndex);
 
             nameTV.setText(name);
-            priceTV.setText(price);
-            quantityTV.setText(quantity);
+            priceTV.setText(String.valueOf(price));
+            quantityTV.setText(String.valueOf(quantity));
             supplierTV.setText(supplier);
             contactsTV.setText(contacts);
             this.quantity = quantity;

@@ -107,6 +107,10 @@
     <string name="editor_insert_product_successful">Insert Product Successful</string>
     <string name="editor_update_product_failed">Update Product Failed</string>
     <string name="editor_update_product_successful">Update Product Successful</string>
+    <string name="editor_delete_product_successful">Delete Product Successful</string>
+    <string name="editor_delete_product_failed">Delete Product Failed</string>
+    <string name="empty_shop_text">Empty Store...</string>
+    <string name="empty_store_subtitle_text"><![CDATA[Start adding cosmetics -->]]></string>
 
 
 </resources>
