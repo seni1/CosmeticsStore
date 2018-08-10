@@ -3,6 +3,7 @@ package com.example.android.cosmeticsstore;
 
 import android.app.Activity;
 import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
@@ -35,7 +36,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
 
     private TextView nameTV;
     private TextView priceTV;
-    private EditText quantityET;
+    private TextView quantityET;
     private TextView supplierTV;
     private TextView contactsTV;
 
@@ -180,13 +181,16 @@ public class ProductDetailsActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.action_save:
                 savePet();
                 finish();
                 return true;
+
             case R.id.action_delete:
                 showDeleteConfirmationDialog();
                 return true;
+
             case android.R.id.home:
                 if (!mCosHasChanged) {
                     NavUtils.navigateUpFromSameTask(ProductDetailsActivity.this);
