@@ -96,7 +96,9 @@
     <string name="order_button">ORDER PRODUCT</string>
     <string name="delete_button">DELETE PRODUCT</string>
     <string name="editor_activity_title_product_details">Product Details</string>
+
     <string name="increase_button">+</string>
+
     <string name="decrease_button">-</string>
 
 

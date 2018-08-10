@@ -25,9 +25,11 @@
 
             <EditText
                 android:id="@+id/edit_name"
+                android:hint="Product Name"
                 style="@style/EditorFieldStyle"
                 android:inputType="textCapWords" />
         </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -47,6 +49,7 @@
 
             <EditText
                 android:id="@+id/edit_price"
+                android:hint="Product Price"
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
@@ -55,6 +58,7 @@
                 style="@style/EditorUnitsStyle"
                 android:text="@string/currency" />
         </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -78,11 +82,13 @@
             <!-- Weight field -->
             <EditText
                 android:id="@+id/edit_quantity"
+                android:hint="Product Quantity"
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
 
         </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -103,9 +109,11 @@
 
             <EditText
                 android:id="@+id/edit_supplier"
+                android:hint="Name of the Supplier"
                 style="@style/EditorFieldStyle"
                 android:inputType="textCapWords" />
         </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -129,10 +137,13 @@
             <!-- Weight field -->
             <EditText
                 android:id="@+id/edit_contacts"
+                android:hint="Contacts of the Supplier"
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
 
         </RelativeLayout>
+
     </LinearLayout>
+
 </LinearLayout>

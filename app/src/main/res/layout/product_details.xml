@@ -71,10 +71,11 @@
             android:text="@string/category_quantity" />
 
         <Button
-            android:id="@+id/increase_button"
+            android:id="@+id/decrease_button"
             android:layout_height="40dp"
             android:layout_width="40dp"
-            android:text="@string/increase_button"
+            android:text="@string/decrease_button"
+            android:onClick="addQuantity"
             android:padding="10dp"/>
 
         <!-- Input fields -->
@@ -96,10 +97,11 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/decrease_button"
+            android:id="@+id/increase_button"
             android:layout_height="40dp"
             android:layout_width="40dp"
-            android:text="@string/decrease_button"
+            android:text="@string/increase_button"
+            android:onClick="decreaseQuantity"
             android:layout_alignParentRight="true" />
 
     </LinearLayout>

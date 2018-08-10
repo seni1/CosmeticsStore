@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,9 +39,44 @@ public class ProductDetailsActivity extends AppCompatActivity implements
     private TextView supplierTV;
     private TextView contactsTV;
 
+    private Button decreaseButton;
+    private Button increaseButton;
+
     private boolean mCosHasChanged = false;
 
+    int quantity = 0;
+
+
+    public void addQuantity  (View view) {
+        quantity = quantity - 1;
+        displayIncQuantity(quantity);
+
+    }
+
+    public void decreaseQuantity (View view) {
+        quantity = quantity + 1;
+        displayDecQuantity(quantity);
+    }
+
+    private void displayDecQuantity(int decQuantity) {
+        TextView quantityView = findViewById(R.id.prod_quant_tv);
+        quantityView.setText(String.valueOf(decQuantity));
+    }
+
+    private void displayIncQuantity(int quantity) {
+        TextView quantityView = findViewById(R.id.prod_quant_tv);
+        quantityView.setText(String.valueOf(quantity));
+    }
+
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            mCosHasChanged = true;
+            return false;
+        }
+    };
+
+    private Button.OnTouchListener buttonTouchListener = new Button.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             mCosHasChanged = true;
@@ -75,6 +111,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         quantityET.setOnTouchListener(mTouchListener);
         supplierTV.setOnTouchListener(mTouchListener);
         contactsTV.setOnTouchListener(mTouchListener);
+
+        increaseButton = findViewById(R.id.decrease_button);
+        decreaseButton = findViewById(R.id.increase_button);
+
+        increaseButton.setOnTouchListener(buttonTouchListener);
+        decreaseButton.setOnTouchListener(buttonTouchListener);
 
     }
 
@@ -164,9 +206,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * This method is called when the back button is pressed.
-     */
     @Override
     public void onBackPressed() {
 
@@ -181,6 +220,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         finish();
+
                     }
                 };
 
