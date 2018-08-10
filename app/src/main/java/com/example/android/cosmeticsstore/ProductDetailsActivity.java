@@ -36,38 +36,41 @@ public class ProductDetailsActivity extends AppCompatActivity implements
 
     private TextView nameTV;
     private TextView priceTV;
-    private TextView quantityET;
+    private TextView quantityTV;
     private TextView supplierTV;
     private TextView contactsTV;
 
     private Button decreaseButton;
     private Button increaseButton;
 
+    private Button call;
+
     private boolean mCosHasChanged = false;
 
-    int quantity = 0;
+    int quantity;
 
 
-    public void addQuantity  (View view) {
-        quantity = quantity - 1;
-        displayIncQuantity(quantity);
+    public void addQuantity (View view) {
+        quantity++;
+        quantityTV.setText(String.valueOf(quantity));
 
     }
 
     public void decreaseQuantity (View view) {
-        quantity = quantity + 1;
-        displayDecQuantity(quantity);
+        quantity--;
+        if (quantity < 0) {
+            quantity = 0;
+        }
+        quantityTV.setText(String.valueOf(quantity));
     }
 
-    private void displayDecQuantity(int decQuantity) {
-        TextView quantityView = findViewById(R.id.prod_quant_tv);
-        quantityView.setText(String.valueOf(decQuantity));
-    }
-
-    private void displayIncQuantity(int quantity) {
-        TextView quantityView = findViewById(R.id.prod_quant_tv);
-        quantityView.setText(String.valueOf(quantity));
-    }
+   private void callBtn() {
+        if (!TextUtils.isEmpty(contactsTV.getText().toString())) {
+            Intent intentCall = new Intent(Intent.ACTION_DIAL);
+            intentCall.setData(Uri.parse("tel:" + contactsTV.getText().toString()));
+            startActivity(intentCall);
+        }
+   }
 
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
         @Override
@@ -93,23 +96,20 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         Intent intent = getIntent();
         mCurrentCosUri = intent.getData();
 
-        if (mCurrentCosUri == null) {
-            setTitle(getString(R.string.editor_activity_title_product_details));
-            invalidateOptionsMenu();
-        } else {
-            setTitle(getString(R.string.editor_activity_title_edit_product));
-            getLoaderManager().initLoader(EXISTING_COS_LOADER, null, this);
-        }
+        setTitle(getString(R.string.editor_activity_title_product_details));
+
+        getLoaderManager().initLoader(EXISTING_COS_LOADER, null, this);
 
         nameTV = findViewById(R.id.prod_name_tv);
         priceTV = findViewById(R.id.prod_price_tv);
-        quantityET = findViewById(R.id.prod_quant_tv);
+        quantityTV = findViewById(R.id.prod_quant_tv);
         supplierTV = findViewById(R.id.prod_sup_tv);
         contactsTV = findViewById(R.id.sup_cont_tv);
+        call = findViewById(R.id.order_button);
 
         nameTV.setOnTouchListener(mTouchListener);
         priceTV.setOnTouchListener(mTouchListener);
-        quantityET.setOnTouchListener(mTouchListener);
+        quantityTV.setOnTouchListener(mTouchListener);
         supplierTV.setOnTouchListener(mTouchListener);
         contactsTV.setOnTouchListener(mTouchListener);
 
@@ -119,12 +119,19 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         increaseButton.setOnTouchListener(buttonTouchListener);
         decreaseButton.setOnTouchListener(buttonTouchListener);
 
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callBtn();
+            }
+        });
+
     }
 
     private void savePet() {
         String nameString = nameTV.getText().toString().trim();
         String priceString = priceTV.getText().toString().trim();
-        String quantityString = quantityET.getText().toString().trim();
+        String quantityString = quantityTV.getText().toString().trim();
         String supplierString = supplierTV.getText().toString().trim();
         String contactsString = contactsTV.getText().toString().trim();
 
@@ -144,19 +151,19 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         if (mCurrentCosUri == null) {
             Uri newUri = getContentResolver().insert(CosmeticsEntry.CONTENT_URI, values);
             if (newUri == null) {
-                Toast.makeText(this, getString(R.string.editor_insert_pet_failed),
+                Toast.makeText(this, getString(R.string.editor_insert_product_failed),
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, getString(R.string.editor_insert_pet_successful),
+                Toast.makeText(this, getString(R.string.editor_insert_product_successful),
                         Toast.LENGTH_SHORT).show();
             }
         } else {
             int rowsAffected = getContentResolver().update(mCurrentCosUri, values, null, null);
             if (rowsAffected == 0) {
-                Toast.makeText(this, getString(R.string.editor_update_pet_failed),
+                Toast.makeText(this, getString(R.string.editor_update_product_failed),
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, getString(R.string.editor_update_pet_successful),
+                Toast.makeText(this, getString(R.string.editor_update_product_successful),
                         Toast.LENGTH_SHORT).show();
             }
         }
@@ -253,7 +260,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        // Bail early if the cursor is null or there is less than 1 row in the cursor
+
         if (cursor == null || cursor.getCount() < 1) {
             return;
         }
@@ -266,16 +273,17 @@ public class ProductDetailsActivity extends AppCompatActivity implements
             int contactsColumnIndex = cursor.getColumnIndex(CosmeticsEntry.COLUMN_CONTACTS);
 
             String name = cursor.getString(nameColumnIndex);
-            String price = cursor.getString(priceColumnIndex);
-            String quantity = cursor.getString(quantityColumnIndex);
+            int price = cursor.getInt(priceColumnIndex);
+            int quantity = cursor.getInt(quantityColumnIndex);
             String supplier = cursor.getString(supplierColumnIndex);
             String contacts = cursor.getString(contactsColumnIndex);
 
             nameTV.setText(name);
             priceTV.setText(price);
-            quantityET.setText(quantity);
+            quantityTV.setText(quantity);
             supplierTV.setText(supplier);
             contactsTV.setText(contacts);
+            this.quantity = quantity;
         }
     }
 
@@ -283,7 +291,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
     public void onLoaderReset(Loader<Cursor> loader) {
         nameTV.setText("");
         priceTV.setText("");
-        quantityET.setText("");
+        quantityTV.setText("");
         supplierTV.setText("");
         contactsTV.setText("");
     }
@@ -305,9 +313,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         alertDialog.show();
     }
 
-    /**
-     * Prompt the user to confirm that they want to delete this pet.
-     */
     private void showDeleteConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.delete_dialog_msg);
@@ -325,14 +330,10 @@ public class ProductDetailsActivity extends AppCompatActivity implements
             }
         });
 
-        // Create and show the AlertDialog
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
-    /**
-     * Perform the deletion of the pet in the database.
-     */
     private void deleteProduct() {
         if (mCurrentCosUri != null) {
             int rowsDeleted = getContentResolver().delete(mCurrentCosUri, null, null);

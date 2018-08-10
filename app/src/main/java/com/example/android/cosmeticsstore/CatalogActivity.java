@@ -24,7 +24,7 @@ import com.example.android.cosmeticsstore.data.CosContract.CosmeticsEntry;
  */
 public class CatalogActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final int PET_LOADER = 8;
+    private static final int COS_LOADER = 8;
 
     CosCursorAdapter mCursorAdapter;
 
@@ -43,15 +43,15 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
             }
         });
 
-        ListView petListView = findViewById(R.id.list);
+        ListView cosListView = findViewById(R.id.list);
 
         View emptyView = findViewById(R.id.empty_view);
-        petListView.setEmptyView(emptyView);
+        cosListView.setEmptyView(emptyView);
 
         mCursorAdapter = new CosCursorAdapter(this, null);
-        petListView.setAdapter(mCursorAdapter);
+        cosListView.setAdapter(mCursorAdapter);
 
-        petListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        cosListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
@@ -66,13 +66,10 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
             }
         });
 
-        getLoaderManager().initLoader(PET_LOADER, null,  this);
+        getLoaderManager().initLoader(COS_LOADER, null,  this);
     }
 
-    /**
-     * Helper method to insert hardcoded pet data into the database. For debugging purposes only.
-     */
-    private void insertPet() {
+    private void insertCos() {
 
         ContentValues values = new ContentValues();
         values.put(CosmeticsEntry.COLUMN_PRODUCT_NAME, "Moroccanoil Shampoo");
@@ -84,10 +81,7 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
         Uri newUri = getContentResolver().insert(CosmeticsEntry.CONTENT_URI, values);
     }
 
-    /**
-     * Helper method to delete all pets in the database.
-     */
-    private void deleteAllPets() {
+    private void deleteAllCos() {
         int rowsDeleted = getContentResolver().delete(CosmeticsEntry.CONTENT_URI, null, null);
         Log.v("CatalogActivity", rowsDeleted + " rows deleted from pet database");
     }
@@ -101,16 +95,16 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // User clicked on a menu option in the app bar overflow menu
+
         switch (item.getItemId()) {
-            // Respond to a click on the "Insert dummy data" menu option
+
             case R.id.action_insert_dummy_data:
-                insertPet();
+                insertCos();
                 return true;
-            // Respond to a click on the "Delete all entries" menu option
+
             case R.id.action_delete_all_entries:
-                // Delete all pets
-                deleteAllPets();
+
+                deleteAllCos();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -119,7 +113,7 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        // Define a projection that specifies the columns from the table we care about.
+
         String[] projection = {
                 CosmeticsEntry._ID,
                 CosmeticsEntry.COLUMN_PRODUCT_NAME,

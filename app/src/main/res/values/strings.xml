@@ -103,6 +103,10 @@
     <string name="edit_button">EDIT</string>
     <string name="action_edit">Edit</string>
     <string name="action_order">Order</string>
+    <string name="editor_insert_product_failed">Insert Product Failed</string>
+    <string name="editor_insert_product_successful">Insert Product Successful</string>
+    <string name="editor_update_product_failed">Update Product Failed</string>
+    <string name="editor_update_product_successful">Update Product Successful</string>
 
 
 </resources>
