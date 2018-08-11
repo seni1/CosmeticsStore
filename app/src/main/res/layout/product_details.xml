@@ -28,6 +28,7 @@
                 android:id="@+id/prod_name_tv"
                 style="@style/EditorFieldStyle"
                 android:inputType="textCapWords" />
+
         </RelativeLayout>
 
     </LinearLayout>
@@ -53,7 +54,6 @@
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
-
         </RelativeLayout>
 
     </LinearLayout>
@@ -65,44 +65,40 @@
         android:orientation="horizontal"
         android:padding="15dp">
 
-        <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
             android:text="@string/category_quantity" />
 
         <Button
             android:id="@+id/decrease_button"
-            android:layout_height="40dp"
             android:layout_width="40dp"
-            android:text="@string/decrease_button"
+            android:layout_height="40dp"
             android:onClick="decreaseQuantity"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:text="@string/decrease_button"
+            tools:ignore="OnClick" />
 
-        <!-- Input fields -->
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:paddingLeft="4dp">
 
-            <!-- Quantity field -->
-
-
             <TextView
                 android:id="@+id/prod_quant_tv"
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
-
         </RelativeLayout>
 
         <Button
             android:id="@+id/increase_button"
-            android:layout_height="40dp"
             android:layout_width="40dp"
-            android:text="@string/increase_button"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
             android:onClick="addQuantity"
-            android:layout_alignParentRight="true" />
+            android:text="@string/increase_button"
+            tools:ignore="OnClick" />
 
     </LinearLayout>
 
@@ -138,37 +134,30 @@
         android:orientation="horizontal"
         android:padding="15dp">
 
-        <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
             android:text="@string/category_contacts" />
 
-        <!-- Input fields -->
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:paddingLeft="4dp">
 
-            <!-- Contacts field -->
             <TextView
                 android:id="@+id/sup_cont_tv"
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
-
         </RelativeLayout>
 
-        <!-- Label -->
         <Button
             android:id="@+id/order_button"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/order_button"
-            android:padding="10dp"/>
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/order_button" />
 
     </LinearLayout>
-
-
 
 </LinearLayout>

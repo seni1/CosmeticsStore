@@ -1,6 +1,7 @@
 package com.example.android.cosmeticsstore;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.ContentUris;
@@ -26,7 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.cosmeticsstore.data.CosContract.CosmeticsEntry;
-
 
 public class ProductDetailsActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
@@ -88,6 +88,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         }
     };
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,7 +129,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
 
     }
 
-    private void savePet() {
+    private void saveProduct() {
         String nameString = nameTV.getText().toString().trim();
         String priceString = priceTV.getText().toString().trim();
         String quantityString = quantityTV.getText().toString().trim();
@@ -190,7 +191,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
 
             case R.id.action_save:
-                savePet();
+                saveProduct();
                 finish();
                 return true;
 
@@ -338,10 +339,10 @@ public class ProductDetailsActivity extends AppCompatActivity implements
         if (mCurrentCosUri != null) {
             int rowsDeleted = getContentResolver().delete(mCurrentCosUri, null, null);
             if (rowsDeleted == 0) {
-                Toast.makeText(this, getString(R.string.editor_delete_pet_failed),
+                Toast.makeText(this, getString(R.string.editor_delete_product_failed),
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, getString(R.string.editor_delete_pet_successful),
+                Toast.makeText(this, getString(R.string.editor_delete_product_successful),
                         Toast.LENGTH_SHORT).show();
             }
         }

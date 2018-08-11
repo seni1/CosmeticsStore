@@ -55,7 +55,7 @@ public class EditorActivity extends AppCompatActivity implements
         mCurrentCosUri = intent.getData();
 
         if (mCurrentCosUri == null) {
-            setTitle(getString(R.string.editor_activity_title_new_pet));
+            setTitle(getString(R.string.editor_activity_title_new_product));
             invalidateOptionsMenu();
         } else {
             setTitle(getString(R.string.editor_activity_title_edit_product));
@@ -76,7 +76,7 @@ public class EditorActivity extends AppCompatActivity implements
 
     }
 
-    private void savePet() {
+    private void saveProduct() {
         String nameString = mNameEditText.getText().toString().trim();
         String priceString = priceET.getText().toString().trim();
         String quantityString = quantityET.getText().toString().trim();
@@ -137,7 +137,7 @@ public class EditorActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                savePet();
+                saveProduct();
                 finish();
                 return true;
             case R.id.action_delete:
@@ -256,9 +256,6 @@ public class EditorActivity extends AppCompatActivity implements
         alertDialog.show();
     }
 
-    /**
-     * Prompt the user to confirm that they want to delete this pet.
-     */
     private void showDeleteConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.delete_dialog_msg);
@@ -281,9 +278,7 @@ public class EditorActivity extends AppCompatActivity implements
         alertDialog.show();
     }
 
-    /**
-     * Perform the deletion of the pet in the database.
-     */
+
     private void deleteProduct() {
         if (mCurrentCosUri != null) {
             int rowsDeleted = getContentResolver().delete(mCurrentCosUri, null, null);

@@ -19,9 +19,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.android.cosmeticsstore.data.CosContract.CosmeticsEntry;
 
-/**
- * Displays list of pets that were entered and stored in the app.
- */
 public class CatalogActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int COS_LOADER = 8;

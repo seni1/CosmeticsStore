@@ -28,6 +28,7 @@
                 android:hint="Product Name"
                 style="@style/EditorFieldStyle"
                 android:inputType="textCapWords" />
+
         </RelativeLayout>
 
     </LinearLayout>
@@ -53,10 +54,6 @@
                 style="@style/EditorFieldStyle"
                 android:inputType="number" />
 
-            <TextView
-                android:id="@+id/label_contacts"
-                style="@style/EditorUnitsStyle"
-                android:text="@string/currency" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -67,19 +64,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
             android:text="@string/category_quantity" />
 
-        <!-- Input fields -->
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:paddingLeft="4dp">
 
-            <!-- Weight field -->
             <EditText
                 android:id="@+id/edit_quantity"
                 android:hint="Product Quantity"
@@ -122,19 +116,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
             android:text="@string/category_contacts" />
 
-        <!-- Input fields -->
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:paddingLeft="4dp">
 
-            <!-- Weight field -->
             <EditText
                 android:id="@+id/edit_contacts"
                 android:hint="Contacts of the Supplier"
