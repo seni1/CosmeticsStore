@@ -14,9 +14,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.example.android.cosmeticsstore.data.CosContract.CosmeticsEntry;
 
 public class CatalogActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -24,6 +28,23 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
     private static final int COS_LOADER = 8;
 
     CosCursorAdapter mCursorAdapter;
+
+    private TextView listQuantityTV;
+
+    private Button buyButton;
+
+    int listQuantity;
+
+    public void decListQuantity (View vew) {
+        listQuantity--;
+        if (listQuantity < 0) {
+            listQuantity = 0;
+        }
+        listQuantityTV.setText(String.valueOf(listQuantity));
+    }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +85,13 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
         });
 
         getLoaderManager().initLoader(COS_LOADER, null,  this);
+
+        listQuantityTV = findViewById(R.id.quantity);
+
+        buyButton = findViewById(R.id.buy_button);
+
+
+
     }
 
     private void insertCos() {
