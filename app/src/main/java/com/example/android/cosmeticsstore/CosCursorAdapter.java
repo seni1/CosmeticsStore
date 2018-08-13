@@ -68,7 +68,7 @@ public class CosCursorAdapter extends CursorAdapter {
             }
         });
 
-        if (quantityTextView.getText().equals(0)) {
+        if (quantityTextView.getText().equals("0")) {
             buttonTextView.setVisibility(View.GONE);
         } else {
             buttonTextView.setVisibility(View.VISIBLE);

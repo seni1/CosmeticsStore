@@ -71,10 +71,10 @@
 
         <Button
             android:id="@+id/decrease_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
             android:onClick="decreaseQuantity"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="@string/decrease_button"
             tools:ignore="OnClick" />
 
@@ -93,8 +93,8 @@
 
         <Button
             android:id="@+id/increase_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:onClick="addQuantity"
             android:text="@string/increase_button"
