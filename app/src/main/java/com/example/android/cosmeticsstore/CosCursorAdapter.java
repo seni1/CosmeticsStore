@@ -33,7 +33,6 @@ public class CosCursorAdapter extends CursorAdapter {
 
         TextView nameTextView = view.findViewById(R.id.name);
         TextView priceTextView = view.findViewById(R.id.price);
-        //TODO: Why final?
         final TextView quantityTextView = view.findViewById(R.id.quantity);
         final Button buttonTextView = view.findViewById(R.id.buy_button);
 
@@ -49,11 +48,8 @@ public class CosCursorAdapter extends CursorAdapter {
 
 
         nameTextView.setText(cosName);
-        // TODO: Why valueOf?
         priceTextView.setText(String.valueOf(cosPrice));
-        // Why valueOf twice?
         quantityTextView.setText(String.valueOf(String.valueOf(cosQuantity)));
-
         final Uri mCurrentCosUri = ContentUris.withAppendedId(CosmeticsEntry.CONTENT_URI, cosId);
 
         buttonTextView.setOnClickListener(new View.OnClickListener() {

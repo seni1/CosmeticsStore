@@ -21,12 +21,12 @@
         </activity>
         <activity
             android:name=".EditorActivity"
-            android:label="Карточка товара"
+            android:label="Enter New Product"
             android:parentActivityName=".CatalogActivity" />
 
         <activity
             android:name=".ProductDetailsActivity"
-            android:label="Карточка товара"
+            android:label="Product Details"
             android:parentActivityName=".CatalogActivity" />
 
         <provider

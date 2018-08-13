@@ -73,7 +73,12 @@
     <string name="empty_store_subtitle_text">Start adding cosmetics to the store</string>
 
     <string name="delete_dialog_msg">Delete this product?</string>
+
     <string name="buy_button">BUY</string>
+
+    <string name="all_fields_must_be_entered">All fields must be entered</string>
+
+    <string name="product_not_saved_all_fields_must_be_entered">Product not saved must enter all fields</string>
 
 
 </resources>

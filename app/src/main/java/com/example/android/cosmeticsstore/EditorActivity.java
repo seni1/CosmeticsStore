@@ -84,8 +84,13 @@ public class EditorActivity extends AppCompatActivity implements
         String contactsString = contactsET.getText().toString().trim();
 
         if (mCurrentCosUri == null &&
-                TextUtils.isEmpty(nameString) && TextUtils.isEmpty(priceString) &&
-                TextUtils.isEmpty(quantityString) && TextUtils.isEmpty(supplierString) && TextUtils.isEmpty(contactsString)) {
+                TextUtils.isEmpty(nameString) || TextUtils.isEmpty(priceString) ||
+                TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(supplierString) ||
+                TextUtils.isEmpty(contactsString)) {
+
+            Toast.makeText(this, getString(R.string.product_not_saved_all_fields_must_be_entered),
+                    Toast.LENGTH_LONG).show();
+
             return;
         }
 
@@ -96,25 +101,6 @@ public class EditorActivity extends AppCompatActivity implements
         values.put(CosmeticsEntry.COLUMN_SUPPLIER_NAME, supplierString);
         values.put(CosmeticsEntry.COLUMN_CONTACTS, contactsString);
 
-        if (mCurrentCosUri == null) {
-            Uri newUri = getContentResolver().insert(CosmeticsEntry.CONTENT_URI, values);
-            if (newUri == null) {
-                Toast.makeText(this, getString(R.string.editor_insert_product_failed),
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, getString(R.string.editor_insert_product_successful),
-                        Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            int rowsAffected = getContentResolver().update(mCurrentCosUri, values, null, null);
-            if (rowsAffected == 0) {
-                Toast.makeText(this, getString(R.string.editor_update_product_failed),
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, getString(R.string.editor_update_product_successful),
-                        Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 
     @Override
