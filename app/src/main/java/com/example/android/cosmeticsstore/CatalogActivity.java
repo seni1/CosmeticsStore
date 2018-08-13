@@ -46,6 +46,7 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,6 +161,8 @@ public class CatalogActivity extends AppCompatActivity  implements LoaderManager
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
         mCursorAdapter.swapCursor(data);
+
+
 
     }
 

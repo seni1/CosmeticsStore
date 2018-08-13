@@ -79,13 +79,13 @@ public class CosProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case COSMS:
-                return insertPet(uri, contentValues);
+                return insertCos(uri, contentValues);
             default:
                 throw new IllegalArgumentException("Insertion is not supported for " + uri);
         }
     }
 
-    private Uri insertPet(Uri uri, ContentValues values) {
+    private Uri insertCos(Uri uri, ContentValues values) {
 
         String name = values.getAsString(CosmeticsEntry.COLUMN_PRODUCT_NAME);
         if (name == null) {
